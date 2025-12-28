@@ -29,7 +29,7 @@ function* creatCols(rows) {
   }
 }
 
-const creatDiagons = () => {
+const creatDiagon1 = (rows) => {
   let diagons = [];
 
   for (let i = 0; i < rows.length; i++) {
@@ -45,7 +45,7 @@ const creatDiagons = () => {
   for (let i = 0; i < rows.length; i++) {
     let diagon = [];
     let start = i;
-    for (let j = 1; start < rows[i].length; j++) {
+    for (let j = 0; start < rows[i].length; j++) {
       diagon.push(rows[start][j]);
       start++;
     }
@@ -54,38 +54,72 @@ const creatDiagons = () => {
   return diagons;
 };
 
-const rows = grid
-  .split("\n")
-  .map((x) => x.split(" ").map((x) => +x))
-  .filter((x) => x.length >= 4);
+const creatDiagons2 = (rows) => {
+  let diagons = [];
 
-const cols = [...creatCols(rows)].filter((x) => x.length >= 4);
+  for (let i = rows.length - 1; i >= 0; i--) {
+    let diagon = [];
+    let start = i;
+    for (let j = 0; j < rows.length && start >= 0; j++) {
+      diagon.push(rows[j][start]);
+      start--;
+    }
+    diagons.push(diagon);
+  }
 
-const diagons = creatDiagons().map((x) => x.filter((y) => y !== undefined))
-  .filter((x) => x.length >= 4);
+  for (let i = 0; i < rows.length; i++) {
+    let diagon = [];
+    let start = i;
+    for (let j = rows.length - 1; j >= 0 && start < rows.length; j--) {
+      diagon.push(rows[start][j]);
+      start++;
+    }
+    diagons.push(diagon);
+  }
+  return diagons;
+};
 
-const product = (series, n) => {
+const consecutiveProduct = (line) => {
   let i = 0;
   let largestProduct = 0;
-  while (i <= series.length - n) {
-    let product = 1;
-    for (let count = 0; count < n; count++) {
-      product = product * series[i + count];
-    }
+  while (i < line.length - 3) {
+    const product = line[i] * line[i + 1] * line[i + 2] * line[i + 3];
     largestProduct = Math.max(largestProduct, product);
     i++;
   }
   return largestProduct;
 };
 
-const largestProductOf = (series, n = 4) => {
+const largestProducts = (series, n = 4) => {
   return series
-    .map((x) => product(x, n))
+    .map((line) => consecutiveProduct(line, n))
     .reduce((max, ele) => Math.max(max, ele));
 };
 
-const largestProduct = Math.max(
-  largestProductOf(rows),
-  largestProductOf(cols),
-  largestProductOf(diagons),
-);
+const largestProduct = (grid) => {
+  const rows = grid
+    .split("\n")
+    .map((x) => x.split(" ").map((x) => +x))
+    .filter((x) => x.length >= 4);
+
+  const cols = [...creatCols(rows)].filter((x) => x.length >= 4);
+
+  const diagon1 = creatDiagon1(rows).map((x) =>
+    x.filter((y) => y !== undefined)
+  )
+    .filter((x) => x.length >= 4);
+
+  const diagon2 = creatDiagons2(rows).map((x) =>
+    x.filter((y) => y !== undefined)
+  )
+    .filter((x) => x.length >= 4);
+
+  return Math.max(
+    largestProducts(rows),
+    largestProducts(cols),
+    largestProducts(diagon1),
+    largestProducts(diagon2),
+  );
+};
+
+console.log(largestProduct(grid));

@@ -1,9 +1,11 @@
 const isDivisible = (divisor, divider) => divisor % divider === 0;
 
 const lcmOf = (x, y) => {
-  let lcm = x;
-  while (lcm % y !== 0) {
-    lcm = lcm + x;
+  let term1 = Math.max(x, y);
+  const term2 = Math.min(x, y);
+  let lcm = term1;
+  while (lcm % term2 !== 0) {
+    lcm = lcm + term1;
   }
   return lcm;
 };
@@ -14,11 +16,14 @@ const LCM = (args) => {
   });
 };
 
-const numbers = [];
+export const main = (n) => {
+  const numbers = [];
 
-for (let num = 1; num <= 20; num++) {
-  numbers.push(num);
-}
-console.log(numbers);
+  for (let num = 1; num <= n; num++) {
+    numbers.push(num);
+  }
 
-console.log(LCM(numbers));
+  return LCM(numbers);
+};
+
+console.log(main(20));

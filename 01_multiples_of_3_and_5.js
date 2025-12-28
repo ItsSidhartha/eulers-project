@@ -15,3 +15,5 @@ const multiplesOf3And5 = (limit) => {
   }
   return sum;
 };
+
+console.log(multiplesOf3And5(1000));

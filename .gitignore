@@ -1,0 +1,5 @@
+deno.json
+deno.lock
+.a.js.swp
+.vscode
+random.js

@@ -5,8 +5,7 @@ const largestPlaindrome = () => {
 
   for (let term1 = 999; term1 >= 100; term1--) {
     let term2 = term1;
-    while (term2 >= 100) {
-      if (term1 * term2 < largestPali) break;
+    while (term2 >= 100 && term1 * term2 > largestPali) {
       if (isPalindrome(term1 * term2)) {
         largestPali = Math.max(largestPali, term1 * term2);
       }

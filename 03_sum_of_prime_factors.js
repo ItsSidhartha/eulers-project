@@ -1,6 +1,6 @@
 const isDivisible = (divisor, divider) => divisor % divider === 0;
 
-const isPrime = (num) => {
+export const isPrime = (num) => {
   const largestFactor = Math.sqrt(num);
 
   for (let term = Math.floor(largestFactor); term >= 2; term--) {
@@ -9,7 +9,7 @@ const isPrime = (num) => {
   return true;
 };
 
-const nextPrime = (curr) => { 
+export const nextPrime = (curr) => { 
   let term = curr + 1;
   while (!isPrime(term)) {
     term++;
@@ -35,4 +35,4 @@ const largestPrimeFactor = (num) => {
   return primeFactor;
 };
 
-largestPrimeFactor(600851475143);
+console.log(largestPrimeFactor(600851475143));

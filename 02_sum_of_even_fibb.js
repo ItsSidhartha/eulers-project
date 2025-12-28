@@ -12,3 +12,5 @@ const sumofEvenFibbs = (range) => {
   }
   return sum;
 };
+
+console.log(sumofEvenFibbs(4000000))
