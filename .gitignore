@@ -1,5 +1,5 @@
-deno.json
-deno.lock
-.a.js.swp
-.vscode
+*.json
+*.lock
+*.swp
+*.vscode
 random.js
