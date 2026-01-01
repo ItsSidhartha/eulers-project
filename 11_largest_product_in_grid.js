@@ -30,10 +30,10 @@ function* creatCols(rows) {
 }
 
 const creatDiagon1 = (rows) => {
-  let diagons = [];
+  const diagons = [];
 
   for (let i = 0; i < rows.length; i++) {
-    let diagon = [];
+    const diagon = [];
     let start = i;
     for (let j = 0; start < rows[i].length; j++) {
       diagon.push(rows[j][start]);
@@ -43,7 +43,7 @@ const creatDiagon1 = (rows) => {
   }
 
   for (let i = 0; i < rows.length; i++) {
-    let diagon = [];
+    const diagon = [];
     let start = i;
     for (let j = 0; start < rows[i].length; j++) {
       diagon.push(rows[start][j]);
@@ -55,10 +55,10 @@ const creatDiagon1 = (rows) => {
 };
 
 const creatDiagons2 = (rows) => {
-  let diagons = [];
+  const diagons = [];
 
   for (let i = rows.length - 1; i >= 0; i--) {
-    let diagon = [];
+    const diagon = [];
     let start = i;
     for (let j = 0; j < rows.length && start >= 0; j++) {
       diagon.push(rows[j][start]);
@@ -68,7 +68,7 @@ const creatDiagons2 = (rows) => {
   }
 
   for (let i = 0; i < rows.length; i++) {
-    let diagon = [];
+    const diagon = [];
     let start = i;
     for (let j = rows.length - 1; j >= 0 && start < rows.length; j--) {
       diagon.push(rows[start][j]);
