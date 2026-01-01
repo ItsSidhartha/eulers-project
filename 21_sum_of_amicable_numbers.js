@@ -24,11 +24,11 @@ const sumOfAmicableNums = (limit) => {
     if (isAmicable(candidate)) {
       const compliment = sumOfFactorsOf(candidate);
       sum = sum + candidate + compliment;
-      candidate = compliment
+      candidate = compliment;
     }
     candidate++;
   }
   return sum;
 };
 
-console.log(sumOfAmicableNums(...Deno.args));
+console.log(sumOfAmicableNums(99999));
