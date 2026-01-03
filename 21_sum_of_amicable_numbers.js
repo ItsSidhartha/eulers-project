@@ -31,4 +31,4 @@ const sumOfAmicableNums = (limit) => {
   return sum;
 };
 
-console.log(sumOfAmicableNums(99999));
+console.log(sumOfAmicableNums(10000));
