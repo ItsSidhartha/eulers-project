@@ -2,6 +2,7 @@ const reciprocalCount = (num) => {
   const lookup = [];
   let remainder = 1;
   while (!lookup.includes(remainder)) {
+    if (remainder === 0) return 0;
     lookup.push(remainder);
     remainder = (remainder * 10) % num;
   }
@@ -9,15 +10,17 @@ const reciprocalCount = (num) => {
   return lookup.length - lookup.indexOf(remainder);
 };
 
-const largest = {count:0};
+const largestReciprocal = () => {
+  const largest = { count: 0 };
 
-for (let term = 0; term < 1000; term++) {
-  const count = reciprocalCount(term);
-  if (largest.count < count) {
-    largest.count = count;
-    largest.term = term; 
+  for (let term = 3; term < 1000; term++) {
+    const count = reciprocalCount(term);
+    if (largest.count < count) {
+      largest.count = count;
+      largest.term = term;
+    }
   }
-}
+  return largest;
+};
 
-console.log(largest);
-
+console.log(largestReciprocal());
