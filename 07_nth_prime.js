@@ -20,7 +20,7 @@ function* primeCandidates() {
   }
 }
 
-function* primes() {
+export function* primes() {
   yield 2;
   yield 3;
   const candidates = primeCandidates();
