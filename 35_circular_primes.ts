@@ -2,18 +2,28 @@
 
 The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime
 There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97
-How many circular primes are there below one million
-
-1,000,000
-
-999999
+How many circular primes are there below one million.
 
 The numbers can only be made of 1,3,7,9
+
+If a number is circular prime all of its rotations are circular.
+
 */
 
-import { isPrime } from "./10_sum_of_primes.js";
+const isDivisible = (divisor: number, divider: number): boolean => divisor % divider === 0;
 
-function* candidateGenerator() {
+const isPrime = (num: number): boolean => {
+  if (num === 2) return true;
+  const largestFactor = Math.sqrt(num);
+  if (num % 2 === 0) return false;
+  for (let term = 3; term <= largestFactor; term += 2) {
+    if (isDivisible(num, term)) return false;
+  }
+
+  return true;
+};
+
+function* candidateGenerator(): Generator<number> {
   yield 2;
   yield 3;
   yield 5;
@@ -72,11 +82,16 @@ const sumOfCircularPrimes = (range: number) => {
 
   while (true) {
     const candidate = candidates.next().value;
-
-    if (!candidate) return count;
     if (candidate >= range - 1) return count;
     if (isPrime(candidate) && isCircularPrime(candidate, checked)) count++;
   }
 }
 
-console.log(sumOfCircularPrimes(1000000));
+const main = (args: string[]) => {
+  const limit = Number(args[0]);
+  if (!limit) return console.log("ENTER LIMIT");
+
+  console.log(sumOfCircularPrimes(limit));
+}
+
+main(Deno.args);

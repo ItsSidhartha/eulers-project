@@ -1,6 +1,6 @@
 const isDivisible = (divisor, divider) => divisor % divider === 0;
 
-export const isPrime = (num) => {
+const isPrime = (num) => {
   if (num === 2) return true;
   const largestFactor = Math.sqrt(num);
   if (num % 2 === 0) return false;
