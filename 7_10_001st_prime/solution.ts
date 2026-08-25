@@ -1,0 +1,39 @@
+const isDivisible = (divisor: number, divider: number): boolean => divisor % divider === 0;
+
+const isPrime = (num: number): boolean => {
+  if (num % 2 === 0) return false;
+  const largestFactor = Math.sqrt(num);
+
+  for (let term = 3; term <= Math.floor(largestFactor); term += 2) {
+    if (isDivisible(num, term)) return false;
+  }
+
+  return true;
+};
+
+function* primeCandidates(): Generator<number> {
+  let term = 6;
+  while (true) {
+    yield term - 1;
+    yield term + 1;
+    term += 6;
+  }
+}
+
+export function* primes(): Generator<number> {
+  yield 2;
+  yield 3;
+  const candidates = primeCandidates();
+  while (true) {
+    const candidate = candidates.next().value;
+    if (isPrime(candidate)) yield candidate;
+  }
+}
+
+const nthprime = (n: number): number => {
+  const allPrimes = primes();
+
+  return [...allPrimes.take(n)].at(-1) as number;
+};
+
+console.log(nthprime(10001));
