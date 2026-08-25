@@ -75,7 +75,7 @@ const isCircularPrime = (candidate: number, checked: Map<number, boolean>) => {
 
 
 
-const sumOfCircularPrimes = (range: number) => {
+const countOfCircularPrimes = (range: number) => {
   let count = 0;
   const candidates = candidateGenerator();
   const checked = new Map<number, boolean>();
@@ -88,10 +88,10 @@ const sumOfCircularPrimes = (range: number) => {
 }
 
 const main = (args: string[]) => {
-  const limit = Number(args[0]);
+  const limit = Number(args[0]) || 1000000;
   if (!limit) return console.log("ENTER LIMIT");
 
-  console.log(sumOfCircularPrimes(limit));
+  console.log(countOfCircularPrimes(limit));
 }
 
 main(Deno.args);
