@@ -1,6 +1,7 @@
 import { htmlToMarkdown } from "../euler/html_to_md.ts";
 
 const BASEPATH = "/Users/sidharthamaji/personal/eulers-project"
+const DEFAULT_CONTENT_PATH = "/Users/sidharthamaji/personal/eulers-project/euler/default-content.txt"
 
 export const fetchDescription = async (id: string) => {
   const URL = `https://projecteuler.net/minimal=${id}`;
@@ -30,14 +31,16 @@ const fetchTitle = async (id: string) => {
 
 const toSnakeCase = (title: string) => title.toLowerCase().split(/[- ]/).join("_");
 
-const formateFileName = (id: string, title: string): string => `${BASEPATH}/${id}_${toSnakeCase(title)}`;
+const formateFileName = (id: string, title: string): string => `${id}_${toSnakeCase(title)}`;
 
 export const prepareDirName = async (id: string) => {
   const title = await fetchTitle(id);
   return formateFileName(id, title);
 }
 
-const defaultContent = () => Deno.readTextFile("./default-content.txt");
+const resolvePath = (path: string) => `${BASEPATH}/${path}`;
+
+const defaultContent = () => Deno.readTextFile(DEFAULT_CONTENT_PATH);
 
 const create: Handler = async ({ id }) => {
   console.log("Fetching Description");
@@ -47,14 +50,15 @@ const create: Handler = async ({ id }) => {
 
   console.log("Creating Directory", dirName);
 
-  await Deno.mkdir(dirName, { recursive: true });
+  const resolvedDirPath = resolvePath(dirName);
+  await Deno.mkdir(resolvedDirPath, { recursive: true });
 
   const description = htmlToMarkdown(questionDescription);
 
   console.log("Writing problem.md and solution.ts");
 
-  Deno.writeTextFileSync(`${dirName}/solution.ts`, await defaultContent(), { createNew: true });
-  const problemFileName = `${dirName}/problem.md`;
+  Deno.writeTextFileSync(`${resolvedDirPath}/solution.ts`, await defaultContent(), { createNew: true });
+  const problemFileName = `${resolvedDirPath}/problem.md`;
   Deno.writeTextFileSync(problemFileName, description);
 
   console.log("Opening", problemFileName);
@@ -80,7 +84,7 @@ const run: Handler = async ({ id }) => {
       console.log("Directory Found");
       console.log("Executing the solution for", name);
       const fileToExec = createFileName(name);
-      const { stdout, success, stderr } = await new Deno.Command("deno", { args: ["-A", fileToExec] }).output();
+      const { stdout, success, stderr } = await new Deno.Command("deno", { args: ["-A", resolvePath(fileToExec)] }).output();
 
       console.log(`\n<${"-".repeat(25)}X${"-".repeat(25)}>\n`);
 
