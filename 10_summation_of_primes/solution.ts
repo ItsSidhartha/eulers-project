@@ -42,4 +42,4 @@ const sumOfPrimes = (limit: number): number => {
   return sum;
 };
 
-console.log(sumOfPrimes(2000000));
+export const main = (): number => sumOfPrimes(2000000);

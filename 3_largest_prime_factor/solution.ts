@@ -35,4 +35,4 @@ const largestPrimeFactor = (num: number): number => {
   return primeFactor;
 };
 
-console.log(largestPrimeFactor(600851475143));
+export const main = (): number => largestPrimeFactor(600851475143);

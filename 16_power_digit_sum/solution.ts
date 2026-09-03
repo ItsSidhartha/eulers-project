@@ -19,3 +19,7 @@ const multiplyBIG = (a: number, b: number): number[] => {
 
   return [...digitsOf(carry), ...digits];
 };
+
+export const main = (): number => {
+  throw new Error("Solution not implemented");
+};

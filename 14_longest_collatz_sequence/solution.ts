@@ -24,3 +24,5 @@ const longestCollatz = (n: number): { term: number; count: number } => {
   }
   return longest
 };
+
+export const main = (): number => longestCollatz(1000000).term;

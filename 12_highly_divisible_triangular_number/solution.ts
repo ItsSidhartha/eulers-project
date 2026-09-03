@@ -33,4 +33,4 @@ const largestTriangular = (n: number): number => {
   return term;
 };
 
-console.log(largestTriangular(500));
+export const main = (): number => largestTriangular(500);

@@ -7,3 +7,7 @@
 // const p2 = 9
 // const q2 = 9
 
+export const main = (): number => {
+	throw new Error("Solution not implemented");
+};
+

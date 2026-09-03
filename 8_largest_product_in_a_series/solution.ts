@@ -28,4 +28,4 @@ const largestProduct = (number: string, n: number): number => {
     .reduce((max, ele) => Math.max(max, ele));
 };
 
-console.log(largestProduct(number, 13));
+export const main = (): number => largestProduct(number, 13);

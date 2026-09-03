@@ -18,4 +18,4 @@ const indexOfLargeFibb = (target: number): number => {
   }
 };
 
-console.log(indexOfLargeFibb(1000));
+export const main = (): number => indexOfLargeFibb(1000);

@@ -1,5 +1,5 @@
-let counter = 0;
-const specialPythororianTriplet = (sum: number): number | undefined => {
+const specialPythororianTriplet = (sum: number) => {
+  let counter = 0;
   for (let a = 3; a < (sum - 3) / 3; a++) {
     for (let b = a + 1; b < (sum - 1 - a) / 2; b++) {
       counter++;
@@ -7,7 +7,6 @@ const specialPythororianTriplet = (sum: number): number | undefined => {
       if (c * c === a * a + b * b) return a * b * c;
     }
   }
-  console.log(counter);
 };
 
-console.log(specialPythororianTriplet(1000));
+export const main = (): number | undefined => specialPythororianTriplet(1000);

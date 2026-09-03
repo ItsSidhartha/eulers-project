@@ -68,4 +68,4 @@ const countNonAbundantSums = (limit: number): number => {
   return sumOfNonAbundants(markedAbundandSums);
 };
 
-console.log(countNonAbundantSums(28123));
+export const main = (): number => countNonAbundantSums(28123);

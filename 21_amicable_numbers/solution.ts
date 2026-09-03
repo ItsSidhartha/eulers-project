@@ -31,4 +31,4 @@ const sumOfAmicableNums = (limit: number): number => {
   return sum;
 };
 
-console.log(sumOfAmicableNums(10000));
+export const main = (): number => sumOfAmicableNums(10000);

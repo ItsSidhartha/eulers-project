@@ -1,5 +1,4 @@
 const names: string[] = eval(`[${Deno.readTextFileSync("names.txt")}]`);
-console.log(names.at(-1));
 
 const sortedNames = names.sort();
 
@@ -20,4 +19,4 @@ const sumOfNameScore = sortedNames
   .map((x, i) => x * (i + 1))
   .reduce(sumOf);
 
-console.log(sumOfNameScore);
+export const main = (): number => sumOfNameScore;

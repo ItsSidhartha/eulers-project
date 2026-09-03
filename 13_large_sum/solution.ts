@@ -104,4 +104,4 @@ const sum: number = inputs
   .map((x) => parseInt(x))
   .reduce((sum, ele) => sum + ele);
 
-console.log(BigInt(sum));
+export const main = (): string => String(BigInt(sum));

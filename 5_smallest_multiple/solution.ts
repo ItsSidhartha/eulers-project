@@ -16,7 +16,7 @@ const LCM = (args: number[]): number => {
   });
 };
 
-export const main = (n: number): number => {
+export const main = (n = 20): number => {
   const numbers: number[] = [];
 
   for (let num = 1; num <= n; num++) {
@@ -26,4 +26,3 @@ export const main = (n: number): number => {
   return LCM(numbers);
 };
 
-console.log(main(20));

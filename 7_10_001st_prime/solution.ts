@@ -36,4 +36,4 @@ const nthprime = (n: number): number => {
   return [...allPrimes.take(n)].at(-1) as number;
 };
 
-console.log(nthprime(10001));
+export const main = (): number => nthprime(10001);

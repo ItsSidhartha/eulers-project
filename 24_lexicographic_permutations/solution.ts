@@ -3,7 +3,7 @@ const factorial = (number: number): number => {
   return number * factorial(number - 1);
 };
 
-const main = (target: number): number => {
+function lexicographicPermutaton(target: number) {
   let targetIndex = target - 1;
   const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   let digitsRemaining = 10;
@@ -19,6 +19,8 @@ const main = (target: number): number => {
   }
 
   return Number(result.join(''));
-};
+}
 
-console.log(main(1000000));
+export const main = (target = 1000000): number => {
+  return lexicographicPermutaton(target);
+};

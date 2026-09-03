@@ -13,4 +13,4 @@ const sumofEvenFibbs = (range: number): number => {
   return sum;
 };
 
-console.log(sumofEvenFibbs(4000000))
+export const main = (): number => sumofEvenFibbs(4000000);

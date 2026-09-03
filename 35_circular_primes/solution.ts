@@ -87,11 +87,4 @@ const countOfCircularPrimes = (range: number) => {
   }
 }
 
-const main = (args: string[]) => {
-  const limit = Number(args[0]) || 1000000;
-  if (!limit) return console.log("ENTER LIMIT");
-
-  console.log(countOfCircularPrimes(limit));
-}
-
-main(Deno.args);
+export const main = (): number => countOfCircularPrimes(1000000);

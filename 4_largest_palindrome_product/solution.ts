@@ -15,4 +15,4 @@ const largestPlaindrome = (): number => {
   return largestPali;
 };
 
-console.log(largestPlaindrome());
+export const main = (): number => largestPlaindrome();

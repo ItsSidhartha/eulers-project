@@ -23,4 +23,4 @@ const largestReciprocal = (): { count: number; term?: number } => {
   return largest;
 };
 
-console.log(largestReciprocal());
+export const main = (): number => largestReciprocal().term!;

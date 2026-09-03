@@ -25,4 +25,4 @@ const sundayCount = (): number => {
   return count;
 };
 
-console.log(sundayCount());
+export const main = (): number => sundayCount();

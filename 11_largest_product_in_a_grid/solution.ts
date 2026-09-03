@@ -122,4 +122,4 @@ const largestProduct = (grid: string): number => {
   );
 };
 
-console.log(largestProduct(grid));
+export const main = (): number => largestProduct(grid);
