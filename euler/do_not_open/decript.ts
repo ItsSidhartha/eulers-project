@@ -39,7 +39,7 @@ const decryptAnswers = async (
     ["decrypt"],
   );
 
-  const ivHex = Deno.env.get("IV");
+  const ivHex = Deno.readTextFileSync("/Users/sidharthamaji/personal/eulers-project/euler/do_not_open/iv.txt").trim();
 
   if (!ivHex) {
     throw new Error("IV environment variable is missing");
@@ -67,11 +67,7 @@ const ANSWER_PATH = "/Users/sidharthamaji/personal/eulers-project/euler/do_not_o
 const PASSWORD = Deno.readTextFileSync(PASSWORD_PATH).trim();
 
 export const getAnswer = async (id: string) => {
-  try {
-    const answers = JSON.parse(await decryptAnswers(ANSWER_PATH, PASSWORD)) as Record<string, string>;
-    if (!(id in answers)) throw new Error(`No answer Found for id ${id}`)
-    return answers[id];
-  } catch (_e) {
-    throw new Error("Something Went Wrong");
-  }
+  const answers = JSON.parse(await decryptAnswers(ANSWER_PATH, PASSWORD)) as Record<string, string>;
+  if (!(id in answers)) throw new Error(`No answer Found for id ${id}`)
+  return answers[id];
 }

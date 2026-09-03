@@ -16,6 +16,4 @@ const multiplesOf3And5 = (limit: number): number => {
   return sum;
 };
 
-export const main = () => {
-  return multiplesOf3And5(1000);
-};
+export const main = () => multiplesOf3And5(1000);

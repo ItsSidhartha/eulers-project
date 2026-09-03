@@ -1,7 +1,5 @@
-const isDivisible = (divisor: number, divider: number): boolean => divisor % divider === 0;
-
 const lcmOf = (x: number, y: number): number => {
-  let term1 = Math.max(x, y);
+  const term1 = Math.max(x, y);
   const term2 = Math.min(x, y);
   let lcm = term1;
   while (lcm % term2 !== 0) {
