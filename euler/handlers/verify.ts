@@ -5,7 +5,7 @@ import { run } from "./run.ts";
 const isCorrectAnswer = async (id: string, answer: string): Promise<boolean> => await getAnswer(id) === answer;
 
 export const verify: Handler = async ({ id, answer }) => {
-  const ans = answer ? answer : (await run({ id })).trim();
+  const ans = answer ? answer : (await run({ id })).toString();
   console.log("Given answer --", ans);
   return await isCorrectAnswer(id, ans) ? "Correct Answer" : "Wrong Answer";
 }
