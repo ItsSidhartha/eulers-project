@@ -7,7 +7,7 @@ const isCorrectAnswer = async (id: string, answer: string): Promise<boolean> => 
   return correctAnswer === answer;
 }
 
-export const verify: Handler = async ({ id, answer }) => {
+export const  verify: Handler = async ({ id, answer }) => {
   const ans = answer ? answer : (await run({ id })).trim();
   console.log("Given answer --", ans);
 
