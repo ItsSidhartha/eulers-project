@@ -1,7 +1,8 @@
 import { Command } from "commander";
 import { run } from "../handlers/run.ts";
 
-export const runCommand = new Command('RUN')
+export const runCommand = new Command('run')
+  .alias('RUN')
   .description('Runs the problem with given Id')
   .argument('<id>', 'Id of the problem')
   .action(async (id) => {
